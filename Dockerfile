@@ -2,7 +2,7 @@ FROM phusion/baseimage:0.9.17
 MAINTAINER Radek Slavicinsky "radek@blufor.cz"
 
 # install basic
-RUN export DEBIAN_FRONTEND=noninteractive && apt-get -qq update && apt-get -qqy install unzip ruby make
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get -qq update && apt-get -qqy install unzip ruby make git
 RUN gem install --no-rdoc --no-ri etcd
 
 # disable SSH & Cron
@@ -15,7 +15,7 @@ RUN curl -L -q https://github.com/coreos/etcd/releases/download/v2.1.2/etcd-v2.1
 RUN cd /tmp/ && tar xzvf etcd-v2.1.2-linux-amd64.tar.gz && cp etcd-v2.1.2-linux-amd64/etcdctl /bin/ && rm -rf /tmp/etcd-v2.1.2-linux-amd64*
 
 # install blufor's etcd-tools
-RUN git clone https://github.com/blufor/etcd-tools.git /tmp/etcd-tools && cd /tmp/etcd-tools/etcd && make install && cd / && rm -rf /tmp/etcd-tools
+RUN git clone https://github.com/blufor/etcd-tools.git /tmp/etcd-tools && cd /tmp/etcd-tools && make install && cd / && rm -rf /tmp/etcd-tools
 
 # clean-up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/log/apt /var/log/dpkg.log /var/log/alternatives.log /var/log/bootstrap.log /var/log/faillog /var/log/lastlog /var/log/dmesg /var/log/fsck /var/log/btmp /var/log/wtmp /var/log/upstart /var/log/unattended-upgrades
