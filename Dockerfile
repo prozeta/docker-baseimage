@@ -20,7 +20,8 @@ RUN git clone https://github.com/blufor/etcd-tools.git /tmp/etcd-tools && cd /tm
 # clean-up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/log/apt /var/log/dpkg.log /var/log/alternatives.log /var/log/bootstrap.log /var/log/faillog /var/log/lastlog /var/log/dmesg /var/log/fsck /var/log/btmp /var/log/wtmp /var/log/upstart /var/log/unattended-upgrades
 
-ADD functions.sh /.functions
+ADD tools/* /bin/
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN mkdir -p /cfg
 
 ##

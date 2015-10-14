@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bl "Creating service directory for ${1}"
+mkdir -p /etc/service/${1}
+bl "Service directory for ${1} created"
