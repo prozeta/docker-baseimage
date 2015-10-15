@@ -1,16 +1,10 @@
 FROM phusion/baseimage:0.9.17
 MAINTAINER Radek Slavicinsky "radek@blufor.cz"
-
-# Switch sh to bash
+ENV ETCD_VERSION "2.2.0"
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
-# copy tools
 ADD tools/* /bin/
 ADD build.sh /build.sh
-
-# run build
 RUN /build.sh && rm -f /build.sh
-
 ##
 ## PUT THESE INTO CHILDREN OF THIS DOCKERFILE (you want to add more repos, right? ;))
 ##

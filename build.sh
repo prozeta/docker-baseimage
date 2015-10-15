@@ -2,42 +2,42 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
-bl Updating APT
+b updating APT...
 apt-get -qq update
-bl APT is up-to-date
+bl OK
 
-bl Installing unzip, ruby, make, git
+b installing unzip, ruby, make, git...
 apt-get -qqy install unzip ruby make git >/dev/null 2>&1
-bl Installed unzip, ruby, make, git
+bl OK
 
-bl Installing etcd rubygem
+b installing etcd rubygem...
 gem install --no-rdoc --no-ri etcd >/dev/null
-bl Installed etcd rubygem
+bl OK
 
-bl Disabling sshd
+b disabling sshd...
 rm -rf /etc/service/sshd
 rm -f /etc/my_init.d/00_regen_ssh_host_keys.sh
-bl sshd disabled
+bl OK
 
-bl Disabling cron
+b disabling cron...
 touch /etc/service/cron/down
-bl cron disabled
+bl OK
 
-bl Installing etcdctl
-curl -L -q https://github.com/coreos/etcd/releases/download/v2.1.2/etcd-v2.1.2-linux-amd64.tar.gz -o/tmp/etcd-v2.1.2-linux-amd64.tar.gz 2>/dev/null
+b installing etcdctl...
+curl -L -q https://github.com/coreos/etcd/releases/download/v${ETCD_VERSION}/etcd-v${ETCD_VERSION}-linux-amd64.tar.gz -o/tmp/etcd-v${ETCD_VERSION}-linux-amd64.tar.gz 2>/dev/null
 cd /tmp/
-tar xzf etcd-v2.1.2-linux-amd64.tar.gz
-cp etcd-v2.1.2-linux-amd64/etcdctl /bin/
+tar xzf etcd-v${ETCD_VERSION}-linux-amd64.tar.gz
+cp etcd-v${ETCD_VERSION}-linux-amd64/etcdctl /bin/
 cd /
-rm -rf /tmp/etcd-v2.1.2-linux-amd64*
-bl etcdctl installed
+rm -rf /tmp/etcd-v${ETCD_VERSION}-linux-amd64*
+bl OK
 
-bl Installing etcdtmpl \& yaml2etcd
+b installing etcdtmpl \& yaml2etcd...
 git clone --quiet https://github.com/blufor/etcd-tools.git /tmp/etcd-tools
 cd /tmp/etcd-tools
 make -s install
 cd /
 rm -rf /tmp/etcd-tools
-bl etcdtmpl \& yaml2etcd installed
+bl OK
 
 cleanup

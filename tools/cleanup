@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bl "Cleaning up"
+b "cleaning up after build..."
 apt-get -qq clean
 rm -rf \
   /var/lib/apt/lists/* \
@@ -18,4 +18,4 @@ rm -rf \
   /var/log/wtmp \
   /var/log/upstart \
   /var/log/unattended-upgrades
-bl "Clean-up done"
+bl OK
