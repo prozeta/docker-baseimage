@@ -6,18 +6,10 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # copy tools
 ADD tools/* /bin/
+ADD build.sh /build.sh
 
 # run build
-ADD build/packages.sh /tmp/packages.sh
-RUN /tmp/packages.sh
-
-ADD build/disable-services.sh /tmp/disable-services.sh
-RUN /tmp/disable-services.sh
-
-ADD build/etcd-utils.sh /tmp/etcd-utils.sh
-RUN /tmp/etcd-utils.sh
-
-RUN cleanup
+RUN /build.sh && rm -f /build.sh
 
 ##
 ## PUT THESE INTO CHILDREN OF THIS DOCKERFILE (you want to add more repos, right? ;))
