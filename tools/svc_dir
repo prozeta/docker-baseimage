@@ -1,5 +1,5 @@
 #!/bin/bash
 
-b "creating service directory for \'${1}\'..."
+b "creating service directory for '${1}'..."
 mkdir -p /etc/service/${1} || bl "failed"
 bl OK
