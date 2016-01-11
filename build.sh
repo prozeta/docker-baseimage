@@ -32,12 +32,8 @@ cd /
 rm -rf /tmp/etcd-v${ETCD_VERSION}-linux-amd64*
 bl OK
 
-b installing etcdtmpl \& yaml2etcd...
-git clone --quiet https://github.com/blufor/etcd-tools.git /tmp/etcd-tools
-cd /tmp/etcd-tools
-make -s install
-cd /
-rm -rf /tmp/etcd-tools
+b installing etcd-tools...
+gem install etcd-tools --no-rdoc --no-ri
 bl OK
 
 cleanup
