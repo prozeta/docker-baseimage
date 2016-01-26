@@ -33,7 +33,7 @@ rm -rf /tmp/etcd-v${ETCD_VERSION}-linux-amd64*
 bl OK
 
 b installing etcd-tools...
-gem install etcd-tools --no-rdoc --no-ri
+gem install etcd-tools -v=${ETCD_TOOLS_VERSION} --no-rdoc --no-ri
 bl OK
 
 cleanup
