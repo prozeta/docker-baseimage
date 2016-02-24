@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -en "\e[1;34m${*}\e[0m "
+echo -en "${*}" | logger -i -t stackdocks
