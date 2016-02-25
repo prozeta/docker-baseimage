@@ -14,6 +14,10 @@ b installing etcd rubygem...
 gem install --no-rdoc --no-ri etcd >/dev/null
 bl OK
 
+b install port-authority gem...
+gem install --no-rdoc --no-ri port-authority >/dev/null
+bl OK
+
 b disabling sshd...
 rm -rf /etc/service/sshd
 rm -f /etc/my_init.d/00_regen_ssh_host_keys.sh
